@@ -69,6 +69,7 @@ public class TouziFragment extends BaseFragment {
         fragmentList.add(productListFragment);
         fragmentList.add(productRecommendFragment);
         fragmentList.add(productHotFragment);
+
     }
 
     @Override

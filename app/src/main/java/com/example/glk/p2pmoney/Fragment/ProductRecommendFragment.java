@@ -23,9 +23,10 @@ import butterknife.ButterKnife;
  */
 
 public class ProductRecommendFragment extends Fragment {
+
+
     @BindView(R.id.stellarMap)
     StellarMap stellarMap;
-
 
     private String[] datas = new String[]{"超级新手计划", "乐享活系列90天计划", "钱包计划", "30天理财计划(加息2%)", "90天理财计划(加息5%)", "180天理财计划(加息10%)",
             "林业局投资商业经营", "中学老师购买车辆", "屌丝下海经商计划", "新西游影视拍摄投资", "老师自己周转", "养猪场扩大经营",
@@ -36,7 +37,6 @@ public class ProductRecommendFragment extends Fragment {
     private String[] one = new String[8];
     private String[] two = new String[8];
 
-    @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = UIUtils.getXmlView(R.layout.fragment_product_recommand);
@@ -47,23 +47,23 @@ public class ProductRecommendFragment extends Fragment {
 
     private void initData() {
         int meddle = 8;
-        for(int i = 0;i < 8;i++){
+        for (int i = 0; i < 8; i++) {
             one[i] = datas[i];
         }
 
-        for(int i = 0;i < 8;i++){
+        for (int i = 0; i < 8; i++) {
             two[i] = datas[i + 8];
         }
 
 
-        random =  new Random();
+        random = new Random();
         int padding = UIUtils.dp2px(5);
-        stellarMap.setInnerPadding(padding,padding,padding,padding);
+        stellarMap.setInnerPadding(padding, padding, padding, padding);
         stellarMap.setAdapter(new MyAdapter());
         //每组数据数据的搭配规则
-        stellarMap.setRegularity(7,9);
+        stellarMap.setRegularity(7, 9);
         //设置从哪一组开始做动画操作
-        stellarMap.setGroup(0,true);
+        stellarMap.setGroup(0, true);
     }
 
 
@@ -90,9 +90,9 @@ public class ProductRecommendFragment extends Fragment {
             int b = random.nextInt(210);
             tv.setTextColor(Color.rgb(r, g, b));
             tv.setTextSize(UIUtils.dp2px(8) + random.nextInt(8));
-            if(group == 0 ){
+            if (group == 0) {
                 tv.setText(one[position]);
-            }else {
+            } else {
                 tv.setText(two[position]);
             }
 
