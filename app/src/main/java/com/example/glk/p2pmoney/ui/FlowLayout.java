@@ -63,7 +63,7 @@ public class FlowLayout extends ViewGroup {
             if(lineWidth + childWidth + mp.leftMargin + mp.rightMargin > widthSize){
                 //换行:宽度----对比获得
                 width = Math.max(width,lineWidth);
-                height += lineWidth;
+                height += lineHeight;
                 //重置一下行宽、行高
                 //这边出现一个问题，就是如果最后一次是换行,可以肯定的是高度并没有加上，并且宽度如果很大的话,width应该为此次的宽度
                 lineWidth  = childWidth  + mp.leftMargin + mp.rightMargin;
