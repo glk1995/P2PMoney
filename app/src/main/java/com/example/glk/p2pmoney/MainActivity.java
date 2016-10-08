@@ -15,13 +15,14 @@ import com.example.glk.p2pmoney.Fragment.MeFragment;
 import com.example.glk.p2pmoney.Fragment.MoreFragment;
 import com.example.glk.p2pmoney.Fragment.TouziFragment;
 import com.example.glk.p2pmoney.common.AppManager;
+import com.example.glk.p2pmoney.common.BaseActivity;
 import com.example.glk.p2pmoney.util.UIUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class MainActivity extends FragmentActivity {
+public class MainActivity extends BaseActivity {
     @BindView(R.id.content)
     FrameLayout content;
     @BindView(R.id.iv_home)
@@ -55,18 +56,21 @@ public class MainActivity extends FragmentActivity {
     private MoreFragment moreFragment;
     private FragmentTransaction ft;
 
+
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
-        //将此Activity放入自定义栈
-        AppManager.getInstance().addActivity(this);
-        initData();//初始化时显示主页
+    public void initData() {
+        setSelect(0);
     }
 
-    private void initData() {
-        setSelect(0);
+    @Override
+    protected void initTitle() {
+
+    }
+
+    @Override
+    public int getLayoutId() {
+        return R.layout.activity_main;
     }
 
     @OnClick({R.id.ll_home,R.id.ll_touzi,R.id.ll_me,R.id.ll_more})
