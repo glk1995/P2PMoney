@@ -35,8 +35,8 @@ public abstract class BaseFragment extends Fragment{
 
             @Override
             protected void OnSuccess(LoadingPage.ResultState resultState,View successView) {
-                //        ButterKnife.bind(this, view);
-                //        View view = UIUtils.getXmlView(getLayoutId());
+                //ButterKnife.bind(this, view);
+                //View view = UIUtils.getXmlView(getLayoutId());
                 //原来是this,view参数，现在因为this指的是loadingPage，所以需要BaseFragment.this获取
                 // 然后因为OnSuccess传递了成功的view，所以绑定
                 ButterKnife.bind(BaseFragment.this,successView);

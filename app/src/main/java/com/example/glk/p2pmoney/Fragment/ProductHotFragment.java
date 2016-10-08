@@ -1,9 +1,7 @@
 package com.example.glk.p2pmoney.Fragment;
 
+import android.graphics.Color;
 import android.os.Bundle;
-import android.support.annotation.AnyRes;
-import android.support.annotation.ColorInt;
-import android.support.annotation.ColorRes;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -13,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.glk.p2pmoney.R;
 import com.example.glk.p2pmoney.ui.FlowLayout;
+import com.example.glk.p2pmoney.util.DrawableUtil;
 import com.example.glk.p2pmoney.util.UIUtils;
 
 import java.util.Random;
@@ -59,9 +58,12 @@ public class ProductHotFragment extends Fragment {
             int r = random.nextInt(210);
             int g = random.nextInt(210);
             int b = random.nextInt(210);
-
-            int padding = UIUtils.dp2px(5);
-            tv.setPadding(padding, padding, padding, padding);
+            tv.setBackground(DrawableUtil.getSelector(
+                    DrawableUtil.getDrawable(Color.rgb(r,g,b),UIUtils.dp2px(5)),
+                    DrawableUtil.getDrawable(Color.WHITE,UIUtils.dp2px(5))));
+            //设置内部padding
+            int padding = UIUtils.dp2px(7);
+            tv.setPadding(padding,padding,padding,padding);
             tv.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
