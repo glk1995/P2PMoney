@@ -92,4 +92,5 @@ public abstract class BaseFragment extends Fragment{
 
     //传layout的ID给onCreateView，显示不同的页面
     public abstract int getLayoutId();
+
 }

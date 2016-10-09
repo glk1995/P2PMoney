@@ -1,11 +1,14 @@
 package com.example.glk.p2pmoney.common;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AlertDialog;
 
+import com.example.glk.p2pmoney.MainActivity;
 import com.example.glk.p2pmoney.bean.Login;
 import com.loopj.android.http.AsyncHttpClient;
 
@@ -81,5 +84,16 @@ public abstract class BaseActivity extends FragmentActivity{
             it.putExtra("param",bundle);
         }
         startActivity(it);
+    }
+
+
+    /**
+     * 退出登录
+     * 也就是清除SharedPreference里面的内容
+     */
+    public void loginOut() {
+        getSharedPreferences("user_info", MODE_PRIVATE).edit().clear().commit();
+        AppManager.getInstance().removeAll();
+        gotoActivity(MainActivity.class, null);
     }
 }

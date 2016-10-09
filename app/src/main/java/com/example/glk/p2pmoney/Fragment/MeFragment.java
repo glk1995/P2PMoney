@@ -5,25 +5,28 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
-import android.os.Bundle;
+import android.graphics.Bitmap;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.glk.p2pmoney.R;
+import com.example.glk.p2pmoney.activity.UserInfoActivity;
 import com.example.glk.p2pmoney.bean.Login;
 import com.example.glk.p2pmoney.common.BaseActivity;
 import com.example.glk.p2pmoney.common.BaseFragment;
+import com.example.glk.p2pmoney.util.BitMapUtil;
+import com.example.glk.p2pmoney.util.UIUtils;
 import com.loopj.android.http.RequestParams;
 import com.squareup.picasso.Picasso;
 
 import com.example.glk.p2pmoney.activity.LoginActivity;
+import com.squareup.picasso.Transformation;
+
 import butterknife.BindView;
-import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 
 /**
@@ -74,7 +77,7 @@ public class MeFragment extends BaseFragment {
     protected void initTitle() {
         titleTv.setText("我的资产");
         titleLeft.setVisibility(View.INVISIBLE);
-        titleRight.setVisibility(View.INVISIBLE);
+        titleRight.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -100,7 +103,23 @@ public class MeFragment extends BaseFragment {
         //设置用户名
         textView11.setText(login.UF_ACC);
         //设置图片
-        Picasso.with(getActivity()).load(login.UF_AVATAR_URL).into(imageView1);
+        Picasso.with(getActivity()).load(login.UF_AVATAR_URL).transform(new Transformation() {
+            @Override
+            public Bitmap transform(Bitmap source) {
+                Bitmap zoom = BitMapUtil.zoom(source, UIUtils.dp2px(62), UIUtils.dp2px(62));
+                Bitmap circleBitmap = BitMapUtil.circleBitmap(zoom);
+                //这边需要注意两点
+                //1:transform当中处理完图片之后，需要调用recycle方法会受
+                source.recycle();
+                return circleBitmap;
+            }
+
+            @Override
+            public String key() {
+                //2:重写key方法的返回值，不能是null
+                return "";
+            }
+        }).into(imageView1);
     }
 
     private void showLoginDialog() {
@@ -123,11 +142,9 @@ public class MeFragment extends BaseFragment {
         return R.layout.fragment_me;
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // TODO: inflate a fragment view
-        View rootView = super.onCreateView(inflater, container, savedInstanceState);
-        ButterKnife.bind(this, rootView);
-        return rootView;
+    @OnClick(R.id.title_right)
+    public void clickUserSetting(View view){
+        ((BaseActivity) getActivity()).gotoActivity(UserInfoActivity.class,null);
     }
+
 }

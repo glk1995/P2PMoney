@@ -1,5 +1,11 @@
 package com.example.glk.p2pmoney.activity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -15,9 +21,12 @@ import com.example.glk.p2pmoney.R;
 import com.example.glk.p2pmoney.bean.Login;
 import com.example.glk.p2pmoney.common.AppNetConfig;
 import com.example.glk.p2pmoney.common.BaseActivity;
+import com.example.glk.p2pmoney.util.BitMapUtil;
 import com.example.glk.p2pmoney.util.MD5Utils;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
+
+import java.io.FileOutputStream;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -27,6 +36,7 @@ import butterknife.OnClick;
  */
 
 public class LoginActivity extends BaseActivity {
+
     @BindView(R.id.title_left)
     ImageView titleLeft;
     @BindView(R.id.title_tv)

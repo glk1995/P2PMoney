@@ -36,6 +36,7 @@
             </intent-filter>
         </activity>
         <activity android:name="com.example.glk.p2pmoney.activity.LoginActivity"/>
+        <activity android:name=".activity.UserInfoActivity"/>
     </application>
 
 </manifest>
