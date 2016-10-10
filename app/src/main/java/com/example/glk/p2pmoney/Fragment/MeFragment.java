@@ -13,6 +13,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.glk.p2pmoney.R;
+import com.example.glk.p2pmoney.activity.ChongzhiActivity;
 import com.example.glk.p2pmoney.activity.UserInfoActivity;
 import com.example.glk.p2pmoney.bean.Login;
 import com.example.glk.p2pmoney.common.BaseActivity;
@@ -145,6 +146,11 @@ public class MeFragment extends BaseFragment {
     @OnClick(R.id.title_right)
     public void clickUserSetting(View view){
         ((BaseActivity) getActivity()).gotoActivity(UserInfoActivity.class,null);
+    }
+
+    @OnClick(R.id.chongzhi)
+    public void cz(View view){
+        ((BaseActivity) getActivity()).gotoActivity(ChongzhiActivity.class,null);
     }
 
 }
