@@ -38,6 +38,7 @@
         <activity android:name="com.example.glk.p2pmoney.activity.LoginActivity"/>
         <activity android:name=".activity.UserInfoActivity"/>
         <activity android:name=".activity.ChongzhiActivity"/>
+        <activity android:name=".activity.TiXianActivity"/>
         
         <!--集成支付宝组件声明-->
         <activity android:name="com.alipay.sdk.app.H5PayActivity"
