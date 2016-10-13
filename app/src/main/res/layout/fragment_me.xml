@@ -120,7 +120,7 @@
                 android:gravity="center_vertical"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
-                android:text="投资管理"
+                android:text="近七日年化利率"
                 android:textColor="@color/product_detail_common"
                 android:textSize="13sp"/>
 
@@ -137,7 +137,7 @@
                 android:gravity="center_vertical"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
-                android:text="投资管理(直观)"
+                android:text="投资管理"
                 android:textColor="@color/product_detail_common"
                 android:textSize="13sp"/>
 

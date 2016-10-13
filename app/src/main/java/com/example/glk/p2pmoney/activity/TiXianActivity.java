@@ -15,9 +15,11 @@ import android.widget.Toast;
 import com.example.glk.p2pmoney.R;
 import com.example.glk.p2pmoney.common.BaseActivity;
 import com.example.glk.p2pmoney.util.UIUtils;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
+import com.github.mikephil.charting.data.LineData;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
@@ -52,7 +54,6 @@ public class TiXianActivity extends BaseActivity {
 
     @Override
     protected void initData() {
-
     }
 
     @Override

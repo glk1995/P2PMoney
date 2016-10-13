@@ -13,7 +13,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.glk.p2pmoney.R;
+import com.example.glk.p2pmoney.activity.BarChartActivity;
 import com.example.glk.p2pmoney.activity.ChongzhiActivity;
+import com.example.glk.p2pmoney.activity.LineChartActivity;
+import com.example.glk.p2pmoney.activity.PieChartActivity;
 import com.example.glk.p2pmoney.activity.TiXianActivity;
 import com.example.glk.p2pmoney.activity.UserInfoActivity;
 import com.example.glk.p2pmoney.bean.Login;
@@ -157,6 +160,21 @@ public class MeFragment extends BaseFragment {
     @OnClick(R.id.tixian)
     public void tx(View view){
         ((BaseActivity) getActivity()).gotoActivity(TiXianActivity.class,null);
+    }
+
+    @OnClick(R.id.ll_touzi)
+    public void line(View view){
+        ((BaseActivity) getActivity()).gotoActivity(LineChartActivity.class,null);
+    }
+
+    @OnClick(R.id.ll_touzi_zhiguan)
+    public void bar(View view){
+        ((BaseActivity)getActivity()).gotoActivity(BarChartActivity.class,null);
+    }
+
+    @OnClick(R.id.ll_zichang)
+    public void pie(View view){
+        ((BaseActivity) getActivity()).gotoActivity(PieChartActivity.class,null);
     }
 
 }
