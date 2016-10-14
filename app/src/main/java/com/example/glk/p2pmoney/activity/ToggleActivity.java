@@ -9,6 +9,7 @@ import android.widget.ToggleButton;
 
 import com.example.glk.p2pmoney.R;
 import com.example.glk.p2pmoney.common.BaseActivity;
+import com.example.glk.p2pmoney.ui.GestureEditActivity;
 import com.example.glk.p2pmoney.util.UIUtils;
 
 import butterknife.BindView;
@@ -37,6 +38,7 @@ public class ToggleActivity extends BaseActivity {
                 if(isChecked){
                     //密码已经开启
                     UIUtils.Toast("手势密码已经开启",false);
+                    gotoActivity(GestureEditActivity.class,null);
                 }else {
                     UIUtils.Toast("手势密码已经关闭",false);
                 }

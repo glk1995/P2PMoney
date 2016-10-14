@@ -3,6 +3,7 @@ package com.example.glk.p2pmoney.util;
 import android.content.Context;
 import android.os.Handler;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.example.glk.p2pmoney.R;
@@ -89,6 +90,15 @@ public class UIUtils {
     public static void  Toast(String text,boolean isLong){
         Toast.makeText(getContext(),text,
                 isLong == true ? Toast.LENGTH_LONG : Toast.LENGTH_SHORT).show();
+    }
+
+    public static int[] getScreenDisplay(Context context){
+        WindowManager windowManager = (WindowManager)context.getSystemService(Context.WINDOW_SERVICE);
+        int width = windowManager.getDefaultDisplay().getWidth();//手机屏幕的宽度
+        int height = windowManager.getDefaultDisplay().getHeight();//手机屏幕的高度
+        int result[] = {width,height};
+
+        return result;
     }
 
 }
