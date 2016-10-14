@@ -18,6 +18,7 @@ import com.example.glk.p2pmoney.activity.ChongzhiActivity;
 import com.example.glk.p2pmoney.activity.LineChartActivity;
 import com.example.glk.p2pmoney.activity.PieChartActivity;
 import com.example.glk.p2pmoney.activity.TiXianActivity;
+import com.example.glk.p2pmoney.activity.ToggleActivity;
 import com.example.glk.p2pmoney.activity.UserInfoActivity;
 import com.example.glk.p2pmoney.bean.Login;
 import com.example.glk.p2pmoney.common.BaseActivity;
@@ -175,6 +176,11 @@ public class MeFragment extends BaseFragment {
     @OnClick(R.id.ll_zichang)
     public void pie(View view){
         ((BaseActivity) getActivity()).gotoActivity(PieChartActivity.class,null);
+    }
+
+    @OnClick(R.id.ll_zhanquan)
+    public void safe(View view){
+        ((BaseActivity) getActivity()).gotoActivity(ToggleActivity.class,null);
     }
 
 }

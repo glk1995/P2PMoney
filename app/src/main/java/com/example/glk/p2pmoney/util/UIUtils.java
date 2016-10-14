@@ -3,6 +3,7 @@ package com.example.glk.p2pmoney.util;
 import android.content.Context;
 import android.os.Handler;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.glk.p2pmoney.R;
 import com.example.glk.p2pmoney.common.MyApplication;
@@ -83,6 +84,11 @@ public class UIUtils {
             return true;
         }
         return  false;
+    }
+
+    public static void  Toast(String text,boolean isLong){
+        Toast.makeText(getContext(),text,
+                isLong == true ? Toast.LENGTH_LONG : Toast.LENGTH_SHORT).show();
     }
 
 }

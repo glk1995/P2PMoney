@@ -42,6 +42,7 @@
         <activity android:name=".activity.LineChartActivity"/>
         <activity android:name=".activity.BarChartActivity"/>
         <activity android:name=".activity.PieChartActivity"/>
+        <activity android:name=".activity.ToggleActivity"/>
         
         <!--集成支付宝组件声明-->
         <activity android:name="com.alipay.sdk.app.H5PayActivity"
