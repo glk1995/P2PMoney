@@ -1,5 +1,6 @@
 package com.example.glk.p2pmoney;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -16,6 +17,7 @@ import com.example.glk.p2pmoney.Fragment.MoreFragment;
 import com.example.glk.p2pmoney.Fragment.TouziFragment;
 import com.example.glk.p2pmoney.common.AppManager;
 import com.example.glk.p2pmoney.common.BaseActivity;
+import com.example.glk.p2pmoney.ui.GestureVerifyActivity;
 import com.example.glk.p2pmoney.util.UIUtils;
 
 import butterknife.BindView;
@@ -60,7 +62,23 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void initData() {
+
+        if(getFlag()){
+            gotoActivity(GestureVerifyActivity.class,null);
+        }
         setSelect(0);
+    }
+
+    /**
+     * 获取登录手势密码开启状态
+     * @return
+     */
+    public boolean getFlag(){
+        SharedPreferences sp = getSharedPreferences("gesture", MODE_PRIVATE);
+        String flag= sp.getString("g_boolean","");
+        boolean b = Boolean.parseBoolean(flag);
+
+        return b;
     }
 
     @Override

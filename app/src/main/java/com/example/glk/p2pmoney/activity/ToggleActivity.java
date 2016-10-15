@@ -1,5 +1,6 @@
 package com.example.glk.p2pmoney.activity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CompoundButton;
@@ -32,6 +33,10 @@ public class ToggleActivity extends BaseActivity {
 
     @Override
     protected void initData() {
+        if(getFlag()){
+            tg.setChecked(true);
+        }
+
         tg.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -41,9 +46,36 @@ public class ToggleActivity extends BaseActivity {
                     gotoActivity(GestureEditActivity.class,null);
                 }else {
                     UIUtils.Toast("手势密码已经关闭",false);
+                    saveGesture(null);
                 }
             }
         });
+    }
+
+
+    /**
+     * 获取登录手势密码开启状态
+     * @return
+     */
+    public boolean getFlag(){
+        SharedPreferences sp = getSharedPreferences("gesture", MODE_PRIVATE);
+        String flag= sp.getString("g_boolean","");
+        boolean b = Boolean.parseBoolean(flag);
+
+        return b;
+    }
+
+
+    /**
+     * 保存手势密码信息
+     * @param inputCode
+     */
+    public void saveGesture(String inputCode){
+        SharedPreferences sp = getSharedPreferences("gesture", MODE_PRIVATE);
+        SharedPreferences.Editor edit = sp.edit();
+        edit.putString("g_boolean","false");
+        edit.putString("g_password",inputCode);
+        edit.commit();
     }
 
     @Override

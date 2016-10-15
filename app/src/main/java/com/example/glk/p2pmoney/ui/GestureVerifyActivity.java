@@ -1,6 +1,7 @@
 package com.example.glk.p2pmoney.ui;
 
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.TextUtils;
@@ -68,8 +69,9 @@ public class GestureVerifyActivity extends Activity implements android.view.View
 		mTextOther = (TextView) findViewById(R.id.text_other_account);
 		
 		
-		// ��ʼ��һ����ʾ�������viewGroup
-		mGestureContentView = new GestureContentView(this, true, "1235789",
+		//初始化一个显示各个点的viewGroup
+		String inputCode = getInputCode();
+		mGestureContentView = new GestureContentView(this, true, inputCode,
 				new GestureDrawline.GestureCallBack() {
 
 					@Override
@@ -80,7 +82,7 @@ public class GestureVerifyActivity extends Activity implements android.view.View
 					@Override
 					public void checkedSuccess() {
 						mGestureContentView.clearDrawlineState(0L);
-						Toast.makeText(GestureVerifyActivity.this, "密码正确", 1000).show();
+						Toast.makeText(GestureVerifyActivity.this, "密码正确", Toast.LENGTH_LONG).show();
 						GestureVerifyActivity.this.finish();
 					}
 
@@ -90,14 +92,28 @@ public class GestureVerifyActivity extends Activity implements android.view.View
 						mTextTip.setVisibility(View.VISIBLE);
 						mTextTip.setText(Html
 								.fromHtml("<font color='#c70c1e'>密码错误</font>"));
-						// �����ƶ�����
+						//左右移动动画
 						Animation shakeAnimation = AnimationUtils.loadAnimation(GestureVerifyActivity.this, R.anim.shake);
 						mTextTip.startAnimation(shakeAnimation);
 					}
 				});
-		// �������ƽ�����ʾ���ĸ���������
+		//设置手势解锁显示到哪个布局里面
 		mGestureContentView.setParentView(mGestureContainer);
 	}
+
+
+	/**
+	 * 获取手势密码
+	 * @return
+	 */
+	public String getInputCode(){
+		SharedPreferences sp = getSharedPreferences("gesture", MODE_PRIVATE);
+		String flag= sp.getString("g_boolean","");
+		String inputCode = sp.getString("g_password","");
+
+		return inputCode;
+	}
+
 	
 	private void setUpListeners() {
 		mTextCancel.setOnClickListener(this);

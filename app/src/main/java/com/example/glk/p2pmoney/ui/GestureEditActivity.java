@@ -1,6 +1,7 @@
 package com.example.glk.p2pmoney.ui;
 
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.TextUtils;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.glk.p2pmoney.R;
+import com.example.glk.p2pmoney.bean.Login;
 import com.example.glk.p2pmoney.ui.widget.GestureContentView;
 import com.example.glk.p2pmoney.ui.widget.GestureDrawline;
 import com.example.glk.p2pmoney.ui.widget.LockIndicator;
@@ -78,6 +80,7 @@ public class GestureEditActivity extends Activity implements OnClickListener {
 				} else {
 					if (inputCode.equals(mFirstPassword)) {
 							Toast.makeText(GestureEditActivity.this, "设置成功", Toast.LENGTH_SHORT).show();
+						saveGesture(inputCode);
 						mGestureContentView.clearDrawlineState(0L);
 						GestureEditActivity.this.finish();
 					} else {
@@ -105,6 +108,18 @@ public class GestureEditActivity extends Activity implements OnClickListener {
 		// 设置手势解锁显示到哪个布局里面
 		mGestureContentView.setParentView(mGestureContainer);
 		updateCodeList("");
+	}
+
+	/**
+	 * 保存手势密码信息
+	 * @param inputCode
+	 */
+	public void saveGesture(String inputCode){
+		SharedPreferences sp = getSharedPreferences("gesture", MODE_PRIVATE);
+		SharedPreferences.Editor edit = sp.edit();
+		edit.putString("g_boolean","true");
+		edit.putString("g_password",inputCode);
+		edit.commit();
 	}
 	
 	private void setUpListeners() {
